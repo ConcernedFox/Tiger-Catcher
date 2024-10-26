@@ -1,0 +1,34 @@
+import pgzrun 
+from random import randint
+
+TITLE = "TIGER CATCHER"
+
+WIDTH = 800
+HEIGHT = 600
+
+Message = ""
+
+tiger = Actor("tiger")
+tiger.pos = (400,300)
+
+def draw():
+    screen.clear()
+    screen.fill("Brown")
+    screen.draw.text(Message,center=(400,300),fontsize=30)
+    tiger.draw() 
+
+def placer():
+    tiger.x=randint(50,WIDTH-70)
+    tiger.y=randint(50,HEIGHT-70)
+
+def on_mouse_down(pos):
+    global Message
+    if tiger.collidepoint(pos):
+        Message="Good catch"
+        placer()
+    else:
+        Message="You missed"
+
+       
+placer()
+pgzrun.go()
